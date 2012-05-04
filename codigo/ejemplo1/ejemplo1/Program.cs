@@ -9,19 +9,23 @@ namespace ejemplo1
     {
         static void Main(string[] args)
         {
-            sistema colectivo = new sistema();
-            colectivo.nombre = "colectivo";
-            colectivo.nivel = 0;
+            Sistema colectivo = new Sistema(0, null, "colectivo", 0);
 
-            sistema pasajeros, recorrido, precio, bencina, plata;
+            Sistema pasajeros, recorrido, precio, bencina, plata;
 
-            pasajeros = new sistema("pasajeros", 1);
-            recorrido = new sistema("recorrido", 1);
-            precio = new sistema("precio", 1);
-            bencina = new sistema("bencina", 1);
-            plata = new sistema("plata", 1);
+            pasajeros = new Sistema(1, colectivo, "pasajeros", 1);
+            recorrido = new Sistema(2, colectivo, "recorrido", 1);
+            precio = new Sistema(3, colectivo, "precio", 1);
+            bencina = new Sistema(4, colectivo, "bencina", 1);
+            plata = new Sistema(5, colectivo, "plata", 1);
+            colectivo.addSistema(pasajeros);
+            colectivo.addSistema(recorrido);
+            colectivo.addSistema(precio);
+            colectivo.addSistema(bencina);
+            colectivo.addSistema(plata);
 
-
+            colectivo.writeHijos();
+            Console.ReadKey();
         }
     }
 }
