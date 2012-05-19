@@ -7,23 +7,54 @@ namespace ejemplo1
 {
     class Program
     {
-        static void Main(string[] args)
-        {
+        
+        private static Sistema crearSistema() {
             Sistema colectivo = new Sistema(0, null, "colectivo", 0);
 
-            Sistema pasajeros, recorrido, precio, bencina, plata;
+            Sistema cantidadDePasajeros, recorridoDelColectivo, precioDelPasaje, precioDeLaBencina, cantidadDeBencina, plataDelPasajero;
 
-            pasajeros = new Sistema(1, colectivo, "pasajeros", 1);
-            recorrido = new Sistema(2, colectivo, "recorrido", 1);
-            precio = new Sistema(3, colectivo, "precio", 1);
-            bencina = new Sistema(4, colectivo, "bencina", 1);
-            plata = new Sistema(5, colectivo, "plata", 1);
-            colectivo.addSistema(pasajeros);
-            colectivo.addSistema(recorrido);
-            colectivo.addSistema(precio);
-            colectivo.addSistema(bencina);
-            colectivo.addSistema(plata);
+            cantidadDePasajeros = new Sistema(1, colectivo, "cantidad de pasajeros", 1);
+            plataDelPasajero = new Sistema(2, colectivo, "plata del pasajero", 1);
+            recorridoDelColectivo = new Sistema(3, colectivo, "recorrido del colectivo", 1);
+            precioDelPasaje = new Sistema(4, colectivo, "precio del pasaje", 1);
+            precioDeLaBencina = new Sistema(5, colectivo, "precio de la bencina", 1);
+            cantidadDeBencina = new Sistema(6, colectivo, "cantidad de bencina", 1);
 
+            colectivo.addSistema(cantidadDePasajeros);
+            colectivo.addSistema(plataDelPasajero);
+            colectivo.addSistema(recorridoDelColectivo);
+            colectivo.addSistema(precioDelPasaje);
+            colectivo.addSistema(precioDeLaBencina);
+            colectivo.addSistema(cantidadDeBencina);
+
+            return colectivo;
+        }
+
+        static void Main(string[] args)
+        {
+            Sistema colectivo = crearSistema();
+            /**
+             * #1 cantidadDePasajeros
+             * #2  plataDelPasajero 
+             * #3  recorridoDelColectivo
+             * #4  precioDelPasaje
+             * #5  precioDeLaBencina
+             * #6  cantidadDeBencina
+             * x afecta a y
+             * Ej: si aumenta la cantidadDePasajeros, aumenta en 0.3 el recorridoDelColectivo
+            */
+            double [,] relaciones  = {
+                                     {0.0, 0.0, 0.3, 0.0, 0.0, -0.6}, 
+                                     {0.0, 0.0 , 0.0, 0.0, 0.0, 0.0}, 
+                                     {0.0, -0.4 , 0.0, 0.0, 0.0, -0.4},
+                                     {-0.2, -0.2 , -0.3, 0.0, 0.0, 0.0}, 
+                                     {-0.6, -0.3 , 0.0, 0.3, 0.0, -0.1}, 
+                                     {0.6, 0.3 , 0.0, 0.0, 0.0, 0.0},
+                                     };
+
+            //Print relaciones
+
+            //Print sistema
             colectivo.writeHijos();
             Console.ReadKey();
         }

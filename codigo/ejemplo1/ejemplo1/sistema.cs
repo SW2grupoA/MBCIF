@@ -15,7 +15,7 @@ namespace ejemplo1
         List<Sistema> subSistemas;
 
         public Sistema() {
-            subSistemas = new List<Sistema>();
+            subSistemas = new List<Sistema>(); 
         }
 
         public Sistema(int id, Sistema padre, string nombre, int nivel) {
@@ -24,8 +24,10 @@ namespace ejemplo1
             this.nombre = nombre;
             this.nivel = nivel;
             subSistemas = new List<Sistema>();
-        } 
-
+        }
+        /*
+         * Operaciones de Sistema
+         */
         public void addSistema(Sistema sis) {
             subSistemas.Add(sis);
         }
