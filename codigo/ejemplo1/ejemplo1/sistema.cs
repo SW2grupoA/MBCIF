@@ -12,18 +12,21 @@ namespace ejemplo1
         public Sistema padre;
         public string nombre;
         public int nivel;
+        public double valor;
         List<Sistema> subSistemas;
+        private int contID = 0;
 
         public Sistema() {
             subSistemas = new List<Sistema>(); 
         }
 
-        public Sistema(int id, Sistema padre, string nombre, int nivel) {
-            this.id = id;
+        public Sistema(Sistema padre, string nombre, int nivel) {
+            this.id = contID;
             this.padre = padre;
             this.nombre = nombre;
             this.nivel = nivel;
             subSistemas = new List<Sistema>();
+            this.contID++;
         }
         /*
          * Operaciones de Sistema
@@ -37,8 +40,8 @@ namespace ejemplo1
         }
 
         public Sistema buscarSistema(int id) {
-            return null;
-        }
+            return subSistemas.ElementAt(id); 
+       }
 
         public Sistema padreDelSistema() {
             return this.padre;
@@ -47,7 +50,6 @@ namespace ejemplo1
         public void writeHijos() {
             foreach(Sistema sis in subSistemas){
                 Console.WriteLine(sis.nombre);
-            
             }
         
         }

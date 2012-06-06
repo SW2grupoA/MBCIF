@@ -9,16 +9,16 @@ namespace ejemplo1
     {
         
         private static Sistema crearSistema() {
-            Sistema colectivo = new Sistema(0, null, "colectivo", 0);
+            Sistema colectivo = new Sistema(null, "colectivo", 0);
 
             Sistema cantidadDePasajeros, recorridoDelColectivo, precioDelPasaje, precioDeLaBencina, cantidadDeBencina, plataDelPasajero;
 
-            cantidadDePasajeros = new Sistema(1, colectivo, "cantidad de pasajeros", 1);
-            plataDelPasajero = new Sistema(2, colectivo, "plata del pasajero", 1);
-            recorridoDelColectivo = new Sistema(3, colectivo, "recorrido del colectivo", 1);
-            precioDelPasaje = new Sistema(4, colectivo, "precio del pasaje", 1);
-            precioDeLaBencina = new Sistema(5, colectivo, "precio de la bencina", 1);
-            cantidadDeBencina = new Sistema(6, colectivo, "cantidad de bencina", 1);
+            cantidadDePasajeros = new Sistema(colectivo, "cantidad de pasajeros", 1);
+            plataDelPasajero = new Sistema(colectivo, "plata del pasajero", 1);
+            recorridoDelColectivo = new Sistema(colectivo, "recorrido del colectivo", 1);
+            precioDelPasaje = new Sistema(colectivo, "precio del pasaje", 1);
+            precioDeLaBencina = new Sistema(colectivo, "precio de la bencina", 1);
+            cantidadDeBencina = new Sistema(colectivo, "cantidad de bencina", 1);
 
             colectivo.addSistema(cantidadDePasajeros);
             colectivo.addSistema(plataDelPasajero);
@@ -30,32 +30,56 @@ namespace ejemplo1
             return colectivo;
         }
 
+
         static void Main(string[] args)
         {
             Sistema colectivo = crearSistema();
             /**
-             * #1 cantidadDePasajeros
-             * #2  plataDelPasajero 
-             * #3  recorridoDelColectivo
-             * #4  precioDelPasaje
-             * #5  precioDeLaBencina
-             * #6  cantidadDeBencina
+             * #0 cantidadDePasajeros
+             * #1  plataDelPasajero
+             * #2  recorridoDelColectivo (km)
+             * #3  precioDelPasaje 
+             * #4  precioDeLaBencina
+             * #5  cantidadDeBencina
              * x afecta a y
              * Ej: si aumenta la cantidadDePasajeros, aumenta en 0.3 el recorridoDelColectivo
             */
             double [,] relaciones  = {
-                                     {0.0, 0.0, 0.3, 0.0, 0.0, -0.6}, 
-                                     {0.0, 0.0 , 0.0, 0.0, 0.0, 0.0}, 
-                                     {0.0, -0.4 , 0.0, 0.0, 0.0, -0.4},
-                                     {-0.2, -0.2 , -0.3, 0.0, 0.0, 0.0}, 
-                                     {-0.6, -0.3 , 0.0, 0.3, 0.0, -0.1}, 
-                                     {0.6, 0.3 , 0.0, 0.0, 0.0, 0.0},
+                                     {1.0, 1.0, 1.1, 1.0, 1.0, 0.95}, 
+                                     {1.0, 1.0 , 1.0, 1.0, 1.0, 1.0}, 
+                                     {1.0, 0.95 , 1.0, 1.0, 1.0, 0.987},
+                                     {0.99, 0.96 , 0.967, 1.0, 1.0, 1.0}, 
+                                     {0.93, 0.92 , 1.0, 1.111, 1.0, 0.92}, 
+                                     {1.1, 1.3 , 1.0, 1.0, 1.0, 1.0},
                                      };
 
-            //Print relaciones
+            double[] V = { 100.0, 2000.0, 1500.0, 200.0, 800.0, 4000.0 };
 
-            //Print sistema
-            colectivo.writeHijos();
+            for (int k = 0; k < 8; k++)
+            {
+                Console.WriteLine("Iteración {0} :", k);
+                for (int i = 0; i < V.Length; i++)
+                {
+
+
+                    V[i] = relaciones[i, 0] * V[i];
+                    V[i] = relaciones[i, 1] * V[i];
+                    V[i] = relaciones[i, 2] * V[i];
+                    V[i] = relaciones[i, 3] * V[i];
+                    V[i] = relaciones[i, 4] * V[i];
+                    V[i] = relaciones[i, 5] * V[i];
+
+                    Console.WriteLine("i: " + i + " valor: " + V[i]);
+
+                }
+
+            }
+            
+
+                //Print relaciones
+
+                //Print sistema
+                //colectivo.writeHijos();
             Console.ReadKey();
         }
     }
