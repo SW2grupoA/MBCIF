@@ -53,6 +53,7 @@ namespace ejemplo1
                                      {1.1, 1.3 , 1.0, 1.0, 1.0, 1.0},
                                      };
 
+            string[] nombre = { "cantidad de pasajeros", "plata del pasajero", "recorrido del colectivo (km)", "precio del pasaje", "precio de la bencina", "cantidad de bencina"};
             double[] V = { 100.0, 2000.0, 1500.0, 200.0, 800.0, 4000.0 };
 
             for (int k = 0; k < 8; k++)
@@ -69,9 +70,10 @@ namespace ejemplo1
                     V[i] = relaciones[i, 4] * V[i];
                     V[i] = relaciones[i, 5] * V[i];
 
-                    Console.WriteLine("i: " + i + " valor: " + V[i]);
+                    Console.WriteLine("{0}: {1}",nombre[i],V[i]);
 
                 }
+                //if(v[k] ==
 
             }
             
