@@ -39,8 +39,8 @@ public class regla
     public bool seCumpleRegla(double argumento)
     {
         contador++;
-        if (contador % iteracion == 0) ;
-        else return false;
+        if (contador % iteracion != 0)
+        return false;
 
         if (operador == null) return true;
 

@@ -29,8 +29,8 @@ public class relacion
         }
     }
 
-    public double aplicarRelacion(double argumento)
+    public double aplicarRelacion(double argumentoX, double argumentoY)
     {
-        return new calculos().leerFuncion(funcion, argumento);
+        return new calculos().leerFuncion(funcion, argumentoX,argumentoY);
     }
 }

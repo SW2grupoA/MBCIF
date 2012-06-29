@@ -19,20 +19,20 @@ class MainClass
 		miNivel.agregarElemento(dos);
 
         
-		miNivel.agregarRelacion(0,1,new relacion("4*t",new regla(1)));
-        miNivel.agregarRelacion(1,0, new relacion("t-1", new regla(1)));
+		miNivel.agregarRelacion(0,1,new relacion("4*x",new regla(1)));
+        miNivel.agregarRelacion(1,0, new relacion("y-x", new regla(1)));
 
         miNivel.agregarElemento(tres);
 
-        miNivel.agregarRelacion(2, 0, new relacion("t/2", new regla(10)));
+        miNivel.agregarRelacion(2, 0, new relacion("x/2", new regla(10)));
 
 
         Nivel nivelDos = new Nivel();
 
         nivelDos.agregarElemento(tres);
         nivelDos.agregarElemento(cuatro);
-        nivelDos.agregarRelacion(1, 0, new relacion("t^2-2", new regla(2)));
-        nivelDos.agregarRelacion(0, 1, new relacion("t+1", new regla(4)));
+        nivelDos.agregarRelacion(1, 0, new relacion("x^2-2", new regla(2)));
+        nivelDos.agregarRelacion(0, 1, new relacion("x+1", new regla(4)));
         nivelDos.agregarRelacion(0, 0, new relacion("3", new regla(50000, ">")));
 
 
@@ -43,7 +43,7 @@ class MainClass
 
 
                 
-		Console.WriteLine(uno.valor + " - " + dos.valor + " - " + tres.valor);		
+		Console.WriteLine(uno.valor + " - " + dos.valor + " - " + tres.valor + " - " + cuatro.valor);		
 		
 		for(int i=0;i<20;i++){
             elSistema.iterar();

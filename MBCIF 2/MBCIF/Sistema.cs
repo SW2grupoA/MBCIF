@@ -34,7 +34,8 @@ public class Sistema
                 if (unNivel.matriz[i][j] != null)
                 {
                     if (unNivel.matriz[i][j].seCumpleRegla(unNivel.listaElementos[i].valor))
-                        unNivel.listaElementos[j].valor = unNivel.matriz[i][j].aplicarRelacion(unNivel.listaElementos[i].valor);
+                        unNivel.listaElementos[j].valor = 
+                            unNivel.matriz[i][j].aplicarRelacion(unNivel.listaElementos[i].valor, unNivel.listaElementos[j].valor);
                 }
             }
         }
