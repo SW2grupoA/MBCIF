@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <summary>
+/// Esta clase sirve para crear reglas en las cuales actúan las relaciones.
+/// </summary>
 public class regla
 {
     int contador = 0;

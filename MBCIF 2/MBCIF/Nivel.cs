@@ -14,6 +14,10 @@ public class Nivel
         matriz = new List<List<relacion>>();
     }
 
+    /// <summary>
+    /// Agrega un elemento a la lista del nivel
+    /// </summary>
+    /// <param name="elementoAgregado">elemento a agregar</param>
     public void agregarElemento(Elemento elementoAgregado)
     {
         listaElementos.Add(elementoAgregado);
