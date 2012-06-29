@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/// <summary>
+/// Representa el nivel de un sistema
+/// </summary>
 public class Nivel
 {
     public List<Elemento> listaElementos;
@@ -31,7 +33,6 @@ public class Nivel
                 temp[a].Add(null);
             }
         }
-
 
         //se copia la información que había en la matriz hasta ahora
         for (int i = 0; i < matriz.Count; i++)
