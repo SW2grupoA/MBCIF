@@ -2,58 +2,56 @@ using System;
 
 class MainClass
 {
-		static Elemento<double>uno;
-		static Elemento<double>dos;
+		static Elemento uno;
+		static Elemento dos;
 		static Nivel miNivel;
 	
 	public static void Main (string[] args)
 	{
-		uno=new Elemento<double>("uno", 1);
-		dos=new Elemento<double>("dos", 2);	
+		uno=new Elemento("uno", 1);
+		dos=new Elemento("dos", 2);
+        Elemento tres = new Elemento("tres", 3);
+        Elemento cuatro = new Elemento("cuatro", 4);	
+
 		miNivel=new Nivel();
 		
 		miNivel.agregarElemento(uno);
 		miNivel.agregarElemento(dos);
 
-		miNivel.agregarRelacion(0,1,new relacionUnoADos());
-		miNivel.agregarRelacion(1,0,new relacionDosAUno());
+        
+		miNivel.agregarRelacion(0,1,new relacion("4*t",new regla(1)));
+        miNivel.agregarRelacion(1,0, new relacion("t-1", new regla(1)));
+
+        miNivel.agregarElemento(tres);
+
+        miNivel.agregarRelacion(2, 0, new relacion("t/2", new regla(10)));
+
+
+        Nivel nivelDos = new Nivel();
+
+        nivelDos.agregarElemento(tres);
+        nivelDos.agregarElemento(cuatro);
+        nivelDos.agregarRelacion(1, 0, new relacion("t^2-2", new regla(2)));
+        nivelDos.agregarRelacion(0, 1, new relacion("t+1", new regla(4)));
+        nivelDos.agregarRelacion(0, 0, new relacion("3", new regla(50000, ">")));
+
+
+        Sistema elSistema = new Sistema();
+
+        elSistema.agregarNivel(miNivel);
+        elSistema.agregarNivel(nivelDos);
+
+
+                
+		Console.WriteLine(uno.valor + " - " + dos.valor + " - " + tres.valor);		
 		
-		Console.WriteLine(uno.valor + " - " + dos.valor);		
-		
-		for(int i=0;i<10;i++){		
-			aplicarIteracion();
-			Console.WriteLine(uno.valor + " - " + dos.valor);		
-		}
-				
-		
+		for(int i=0;i<20;i++){
+            elSistema.iterar();
+            Console.WriteLine(uno.valor + " - " + dos.valor + " - " + tres.valor + " - " + cuatro.valor);
+		}       
+        
 			
 		Console.ReadKey();
 	}	
 	
-	static void aplicarIteracion(){
-		for(int i=0;i<miNivel.listaElementos.Count;i++){
-			for(int j=0;j<miNivel.listaElementos.Count;j++){
-				if(miNivel.matriz[i][j]!=null){
-					miNivel.listaElementos[j].valor=miNivel.matriz[i][j].aplicarRelacion(miNivel.listaElementos[i]);
-				}
-			}
-		}		
-	}
-	
-}
-
-
-
-class relacionUnoADos:relacion{
-	public override double aplicarRelacion(Elemento<double> argumento)
-	{
-		return argumento.valor*4;
-	}	
-}
-
-class relacionDosAUno:relacion{
-	public override double aplicarRelacion(Elemento<double> argumento)
-	{
-		return argumento.valor-1;
-	}	
 }
