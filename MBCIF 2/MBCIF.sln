@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBCIF", "MBCIF\MBCIF.csproj", "{7B19EB0B-C2F8-482E-BCB5-EADC17A4AECE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B19EB0B-C2F8-482E-BCB5-EADC17A4AECE}.Debug|x86.ActiveCfg = Debug|x86
+		{7B19EB0B-C2F8-482E-BCB5-EADC17A4AECE}.Debug|x86.Build.0 = Debug|x86
+		{7B19EB0B-C2F8-482E-BCB5-EADC17A4AECE}.Release|x86.ActiveCfg = Release|x86
+		{7B19EB0B-C2F8-482E-BCB5-EADC17A4AECE}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = MBCIF\MBCIF.csproj
+	EndGlobalSection
+EndGlobal
