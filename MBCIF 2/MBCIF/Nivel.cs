@@ -9,11 +9,13 @@ public class Nivel
 {
     public List<Elemento> listaElementos;
     public List<List<relacion>> matriz;
+    public string nombre;
 
-    public Nivel()
+    public Nivel(string nombre)
     {
         listaElementos = new List<Elemento>();
         matriz = new List<List<relacion>>();
+        this.nombre = nombre;
     }
 
     /// <summary>

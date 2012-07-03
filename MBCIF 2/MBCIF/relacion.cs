@@ -32,5 +32,6 @@ public class relacion
     public double aplicarRelacion(double argumentoX, double argumentoY)
     {
         return new calculos().leerFuncion(funcion, argumentoX,argumentoY);
-    }
+    }    
+
 }
