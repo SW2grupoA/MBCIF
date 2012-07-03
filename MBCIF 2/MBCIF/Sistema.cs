@@ -17,6 +17,13 @@ public class Sistema
         niveles.Add(nuevo);
     }
 
+    public void modificarNivel(int posicion, Nivel nivel) {
+        niveles[posicion] = nivel;
+    }
+
+    public void quitarNivel(int posicion) {
+        niveles.RemoveAt(posicion);    
+    }
 
     public void iterar() {
         for (int i = 0; i < niveles.Count; i++) {
@@ -40,5 +47,7 @@ public class Sistema
             }
         }
     }
+
+
 
 }

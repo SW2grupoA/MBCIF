@@ -45,9 +45,54 @@ public class Nivel
         matriz = temp;
     }
 
+    public void modificarElemento(int posicion, Elemento elemento) {
+        listaElementos[posicion] = elemento;
+    }
+
+
+    public void eliminarElemento(int posicion) {
+        listaElementos.RemoveAt(posicion);
+
+
+        //se debe crear una nueva matriz de relaciones, pero de menor tamaño debido a que se eliminó un elemento de ella.
+        List<List<relacion>> temp = new List<List<relacion>>();
+        for (int a = 0; a < listaElementos.Count; a++)
+        {
+            temp.Add(new List<relacion>());
+            for (int b = 0; b < listaElementos.Count; b++)
+            {
+                temp[a].Add(null);
+            }
+        }
+
+        //se copia la información que había en la matriz hasta ahora, quitando las relaciones del elemento eliminado
+        for (int i = 0; i < matriz.Count; i++)
+        {
+            for (int j = 0; j < matriz[i].Count; j++)
+            {
+                if(i<posicion && j<posicion)temp[i][j] = matriz[i][j];
+                if (i < posicion && j > posicion) temp[i][j-1] = matriz[i][j];
+                if (i > posicion && j < posicion) temp[i-1][j] = matriz[i][j];
+                if (i > posicion && j > posicion) temp[i-1][j-1] = matriz[i][j];
+            }
+        }
+        //se copia la nueva matriz a la matriz de este nivel
+        matriz = temp;
+    }
+
     public void agregarRelacion(int x, int y,
             relacion relacionEntreElementos)
     {
         matriz[x][y] = relacionEntreElementos;
+    }
+
+    public void modificarRelacion(int x, int y,
+            relacion relacionEntreElementos) {        
+        matriz[x][y] = relacionEntreElementos;    
+    }
+
+    public void eliminarRelacion(int x, int y)
+    {
+        matriz[x][y] = null;
     }
 }

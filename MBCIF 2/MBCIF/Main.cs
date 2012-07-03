@@ -22,10 +22,9 @@ class MainClass
 		miNivel.agregarRelacion(0,1,new relacion("4*x",new regla(1)));
         miNivel.agregarRelacion(1,0, new relacion("y-x", new regla(1)));
 
-        miNivel.agregarElemento(tres);
+        miNivel.agregarElemento(tres);        
 
-        miNivel.agregarRelacion(2, 0, new relacion("x/2", new regla(10)));
-
+        miNivel.agregarRelacion(2, 0, new relacion("x/2", new regla(2)));        
 
         Nivel nivelDos = new Nivel();
 
