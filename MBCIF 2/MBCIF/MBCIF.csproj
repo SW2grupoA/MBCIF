@@ -37,6 +37,12 @@
   <ItemGroup>
     <Compile Include="calculos.cs" />
     <Compile Include="elemento.cs" />
+    <Compile Include="Fuzzy\conjuntoDifuso.cs" />
+    <Compile Include="Fuzzy\conjuntoGaussi.cs" />
+    <Compile Include="Fuzzy\conjuntoTrapez.cs" />
+    <Compile Include="Fuzzy\conjuntoTriang.cs" />
+    <Compile Include="Fuzzy\fuzzy.cs" />
+    <Compile Include="Fuzzy\valoresVP.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Nivel.cs" />
