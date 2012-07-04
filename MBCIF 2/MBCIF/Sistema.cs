@@ -123,13 +123,26 @@ public class Sistema
     public void imprimirSistema() {
         for (int i = 0; i < niveles.Count; i++) {
             Console.WriteLine("Nivel: " + niveles[i].nombre + "\n");
+            int cadenaMasLarga = largoCadenaMasLarga(niveles[i]);
             for (int j = 0; j < niveles[i].listaElementos.Count; j++)
             {
-                Console.WriteLine(niveles[i].listaElementos[j].nombre + ":\t" + niveles[i].listaElementos[j].valor);
+                Console.Write(niveles[i].listaElementos[j].nombre + ":");
+                for (int k = niveles[i].listaElementos[j].nombre.Length; k < cadenaMasLarga; k++) Console.Write(" ");
+                Console.WriteLine("\t" + niveles[i].listaElementos[j].valor);
             }
             Console.WriteLine();
         }
     }
 
+
+    int largoCadenaMasLarga(Nivel unNivel) {
+        int retorno = 0;
+
+        for (int i = 0; i < unNivel.listaElementos.Count; i++)
+            if (retorno < unNivel.listaElementos[i].nombre.Length)
+                retorno = unNivel.listaElementos[i].nombre.Length;
+
+            return retorno;
+    }
 
 }

@@ -63,7 +63,7 @@ class MainClass
 
         nivelColectivo.agregarElemento(primerNivel.listaElementos[0]);
         nivelColectivo.agregarElemento(new Elemento("Precio pasaje colectivo", 200));
-        nivelColectivo.agregarElemento(new Elemento("Precio Bencina", 100));
+        nivelColectivo.agregarElemento(new Elemento("Precio Bencina", 150));
         nivelColectivo.agregarElemento(demandaColectivo);
         nivelColectivo.agregarElemento(new Elemento("Ganancia", 2000));
         nivelColectivo.agregarElemento(new Elemento("Distancia recorrida", 1000));
@@ -90,7 +90,7 @@ class MainClass
 
         nivelMicrobus.agregarElemento(primerNivel.listaElementos[1]);
         nivelMicrobus.agregarElemento(new Elemento("Precio pasaje", 150));
-        nivelMicrobus.agregarElemento(new Elemento("Precio petróleo", 80));
+        nivelMicrobus.agregarElemento(new Elemento("Precio petróleo", 140));
         nivelMicrobus.agregarElemento(demandaMicrobus);
         nivelMicrobus.agregarElemento(new Elemento("Ganancia", 0));
         nivelMicrobus.agregarElemento(new Elemento("Distancia recorrida", 1000));
@@ -120,8 +120,8 @@ class MainClass
         nivelUsuario.agregarElemento(demandaMicrobus);
 
 
-        nivelUsuario.agregarRelacion(1, 2, new relacion("y-x/100", new regla(1)));
-        nivelUsuario.agregarRelacion(2, 1, new relacion("y-x/100", new regla(1)));
+        //nivelUsuario.agregarRelacion(1, 2, new relacion("y-x/100", new regla(1)));
+        
 
 
         unSistema.agregarNivel(primerNivel);
