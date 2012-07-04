@@ -11,7 +11,7 @@ public class regla
     int contador = 0;
     double valor;
     string operador;
-    int iteracion;
+    public int iteracion;
 
     /// <summary>
     /// Constructor que permite crear una regla

@@ -5,7 +5,7 @@ using System.Text;
 
 public class relacion
 {
-    string funcion;
+    public string funcion;
     public regla Regla;
 
     public relacion(string Funcion)

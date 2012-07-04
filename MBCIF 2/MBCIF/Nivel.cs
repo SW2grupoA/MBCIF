@@ -97,4 +97,17 @@ public class Nivel
     {
         matriz[x][y] = null;
     }
+
+    public int get_indice(string nom)
+    {
+        int i = 0;
+        foreach(Elemento l in listaElementos){
+            if (l.nombre.Equals(nom))
+            {
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
 }
