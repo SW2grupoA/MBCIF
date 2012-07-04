@@ -18,6 +18,11 @@ public class Nivel
         this.nombre = nombre;
     }
 
+
+    public string get_nombre(){
+        return nombre;
+    }
+
     /// <summary>
     /// Agrega un elemento a la lista del nivel
     /// </summary>
@@ -47,14 +52,12 @@ public class Nivel
         matriz = temp;
     }
 
-    public void modificarElemento(int posicion, Elemento elemento)
-    {
+    public void modificarElemento(int posicion, Elemento elemento) {
         listaElementos[posicion] = elemento;
     }
 
 
-    public void eliminarElemento(int posicion)
-    {
+    public void eliminarElemento(int posicion) {
         listaElementos.RemoveAt(posicion);
 
 
@@ -74,10 +77,10 @@ public class Nivel
         {
             for (int j = 0; j < matriz[i].Count; j++)
             {
-                if (i < posicion && j < posicion) temp[i][j] = matriz[i][j];
-                if (i < posicion && j > posicion) temp[i][j - 1] = matriz[i][j];
-                if (i > posicion && j < posicion) temp[i - 1][j] = matriz[i][j];
-                if (i > posicion && j > posicion) temp[i - 1][j - 1] = matriz[i][j];
+                if(i<posicion && j<posicion)temp[i][j] = matriz[i][j];
+                if (i < posicion && j > posicion) temp[i][j-1] = matriz[i][j];
+                if (i > posicion && j < posicion) temp[i-1][j] = matriz[i][j];
+                if (i > posicion && j > posicion) temp[i-1][j-1] = matriz[i][j];
             }
         }
         //se copia la nueva matriz a la matriz de este nivel
@@ -91,18 +94,12 @@ public class Nivel
     }
 
     public void modificarRelacion(int x, int y,
-            relacion relacionEntreElementos)
-    {
-        matriz[x][y] = relacionEntreElementos;
+            relacion relacionEntreElementos) {        
+        matriz[x][y] = relacionEntreElementos;    
     }
 
     public void eliminarRelacion(int x, int y)
     {
         matriz[x][y] = null;
-    }
-
-
-    public string get_nombre() {
-        return nombre;    
     }
 }

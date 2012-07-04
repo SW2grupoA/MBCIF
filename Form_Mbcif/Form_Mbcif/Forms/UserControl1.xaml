@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type MBCIF:Elemento}">
+        <DataTemplate DataType="{x:Type MBCIF:ElementoGrafo}">
             <Border BorderBrush="Black" BorderThickness="1" Padding="0" CornerRadius="5" Background="White">
                 <Border.Style>
                     <Style>

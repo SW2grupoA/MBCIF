@@ -36,7 +36,7 @@ namespace Form_Mbcif.Forms
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Elemento elem in gg.Graph.AllVertices)
+            foreach (ElementoGrafo elem in gg.Graph.AllVertices)
             {
                 
                 if (elem.nombre.Equals("bencina"))

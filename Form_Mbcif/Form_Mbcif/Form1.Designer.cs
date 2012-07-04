@@ -101,7 +101,6 @@
             this.abrirToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.abrirToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.abrirToolStripMenuItem.Text = "&Abrir";
-            //this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
@@ -117,7 +116,6 @@
             this.guardarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.guardarToolStripMenuItem.Text = "&Guardar";
-            //this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // guardarcomoToolStripMenuItem
             // 
@@ -172,7 +170,7 @@
             // 
             this.VergrafoToolStripMenuItem.Enabled = false;
             this.VergrafoToolStripMenuItem.Name = "VergrafoToolStripMenuItem";
-            this.VergrafoToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.VergrafoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.VergrafoToolStripMenuItem.Text = "Ver_Grafo";
             // 
             // ayudaToolStripMenuItem

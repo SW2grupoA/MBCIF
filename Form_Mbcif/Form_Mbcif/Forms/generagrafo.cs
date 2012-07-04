@@ -8,11 +8,11 @@ using Graphviz4Net.Graphs;
 
 namespace Form_Mbcif.Forms
 {
-    public class Elemento
+    public class ElementoGrafo
     {
-        private readonly Graph<Elemento> Graph;
+        private readonly Graph<ElementoGrafo> Graph;
 
-        public Elemento(Graph<Elemento> Graph)
+        public ElementoGrafo(Graph<ElementoGrafo> Graph)
         {
             this.Graph = Graph;
         }
@@ -27,9 +27,9 @@ namespace Form_Mbcif.Forms
 
         private class RemoveCommandImpl : ICommand
         {
-            private Elemento elem;
+            private ElementoGrafo elem;
 
-            public RemoveCommandImpl(Elemento elem)
+            public RemoveCommandImpl(ElementoGrafo elem)
             {
                 this.elem = elem;
             }
@@ -60,25 +60,25 @@ namespace Form_Mbcif.Forms
     {
         public generagrafo()
         {
-            var graph = new Graph<Elemento>();
-            var subgraph = new SubGraph<Elemento>() { Label = "Colectivo" };
-            var a = new Elemento(graph) { nombre = "pasaje", valor = 500 };
-            var b = new Elemento(graph) { nombre = "pasajeros", valor = 25 };
-            var c = new Elemento(graph) { nombre = "bencina", valor = 1000 };
+            var graph = new Graph<ElementoGrafo>();
+            var subgraph = new SubGraph<ElementoGrafo>() { Label = "Colectivo" };
+            var a = new ElementoGrafo(graph) { nombre = "pasaje", valor = 500 };
+            var b = new ElementoGrafo(graph) { nombre = "pasajeros", valor = 25 };
+            var c = new ElementoGrafo(graph) { nombre = "bencina", valor = 1000 };
             graph.AddSubGraph(subgraph);
             subgraph.AddVertex(a);
             subgraph.AddVertex(b);
 
             graph.AddVertex(c);
 
-            graph.AddEdge(new Edge<Elemento>(a, b));
-            graph.AddEdge(new Edge<Elemento>(c, b));
-            graph.AddEdge(new Edge<Elemento>(c, a));
+            graph.AddEdge(new Edge<ElementoGrafo>(a, b));
+            graph.AddEdge(new Edge<ElementoGrafo>(c, b));
+            graph.AddEdge(new Edge<ElementoGrafo>(c, a));
 
             this.Graph = graph;
             this.Graph.Changed += GraphChanged;
         }
-        public Graph<Elemento> Graph { get; private set; }
+        public Graph<ElementoGrafo> Graph { get; private set; }
 
         public IEnumerable<string> nombreselementos
         {
@@ -94,11 +94,11 @@ namespace Form_Mbcif.Forms
                 return;
             }
 
-            var p = new Elemento(this.Graph) { nombre = "cakita" };
+            var p = new ElementoGrafo(this.Graph) { nombre = "cakita" };
             this.Graph.AddVertex(p);
         }
 
-        public void cambiarelemento(Elemento l, int nuevovalor)
+        public void cambiarelemento(ElementoGrafo l, int nuevovalor)
         {
             l.valor = nuevovalor;
         }

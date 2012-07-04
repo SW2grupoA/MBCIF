@@ -4,56 +4,49 @@ using System.Collections.Generic;
 
 public class Sistema
 {
-    public List<Nivel> niveles;
+    public List <Nivel> niveles;
     string estado = "estable";
     public List<List<double>> valores;
-
-    public Sistema()
-    {
+    
+	public Sistema ()
+	{
         niveles = new List<Nivel>();
         valores = new List<List<double>>();
-    }
+	}
 
 
     public int cantidad() {
-        return niveles.Count;        
-    }
-
-    public int get_posicion(string nombre) {
-        for (int i = 0; i < niveles.Count; i++) {
-            if (niveles[i].nombre == nombre) return i;
-        }
         return niveles.Count;
     }
 
-    public void agregarNivel(Nivel nuevo)
-    {
+    public int get_posicion(string nomb) {
+        for (int i = 0; i < niveles.Count; i++)
+            if (niveles[i].nombre == nomb) return i;
+            return -1;
+    }
+
+    public void agregarNivel(Nivel nuevo) {
         niveles.Add(nuevo);
     }
 
-    public void modificarNivel(int posicion, Nivel nivel)
-    {
+    public void modificarNivel(int posicion, Nivel nivel) {
         niveles[posicion] = nivel;
     }
 
-    public void quitarNivel(int posicion)
-    {
-        niveles.RemoveAt(posicion);
+    public void quitarNivel(int posicion) {
+        niveles.RemoveAt(posicion);    
     }
 
-    public void iterar()
-    {
-        for (int i = 0; i < niveles.Count; i++)
-        {
-            aplicarIteracion(niveles[i]);
+    public void iterar() {
+        for (int i = 0; i < niveles.Count; i++) {
+            aplicarIteracion(niveles[i]);            
         }
         registrarValores();
         actualizarEstado();
     }
 
 
-    void registrarValores()
-    {
+    void registrarValores() { 
         valores.Add(new List<double>());
 
         for (int i = 0; i < niveles.Count; i++)
@@ -66,12 +59,11 @@ public class Sistema
 
     }
 
-    void actualizarEstado()
-    {
+    void actualizarEstado() {
         estado = "estable";
-        int contadorDeCambios = 0;
+        int contadorDeCambios=0;
 
-        if (valores.Count < 2) return;
+        if(valores.Count<2)return;
 
         for (int i = 0; i < valores[valores.Count - 1].Count; i++)
         {
@@ -84,12 +76,11 @@ public class Sistema
         if ((double)contadorDeCambios / (double)valores[valores.Count - 1].Count > 0.60) estado = "caotico";
 
         verSiEsOscilatorio();
-
+        
     }
 
 
-    void verSiEsOscilatorio()
-    {
+    void verSiEsOscilatorio() {
         int contador = 0;
 
         for (int i = 0; i < valores.Count; i++)
@@ -98,13 +89,12 @@ public class Sistema
         }
 
 
-        if (contador > 8 && !compararConElUltimoEstado(valores.Count - 2)) estado = "oscilatorio";
+        if (contador > 8 && !compararConElUltimoEstado(valores.Count-2)) estado = "oscilatorio";
     }
 
 
-    bool compararConElUltimoEstado(int k)
-    {
-        int contadorDeCambios = 0;
+    bool compararConElUltimoEstado(int k){
+        int contadorDeCambios=0;
 
         for (int i = 0; i < valores[valores.Count - 1].Count; i++)
         {
@@ -116,17 +106,17 @@ public class Sistema
     }
 
     void aplicarIteracion(Nivel unNivel)
-    {
+    {        
 
         for (int i = 0; i < unNivel.listaElementos.Count; i++)
-        {
+        {            
             for (int j = 0; j < unNivel.listaElementos.Count; j++)
             {
-
+                
                 if (unNivel.matriz[i][j] != null)
                 {
                     if (unNivel.matriz[i][j].seCumpleRegla(unNivel.listaElementos[i].valor))
-                        unNivel.listaElementos[j].valor =
+                        unNivel.listaElementos[j].valor = 
                             unNivel.matriz[i][j].aplicarRelacion(unNivel.listaElementos[i].valor, unNivel.listaElementos[j].valor);
                 }
             }
@@ -140,10 +130,8 @@ public class Sistema
     }
 
 
-    public void imprimirSistema()
-    {
-        for (int i = 0; i < niveles.Count; i++)
-        {
+    public void imprimirSistema() {
+        for (int i = 0; i < niveles.Count; i++) {
             Console.WriteLine("Nivel: " + niveles[i].nombre + "\n");
             int cadenaMasLarga = largoCadenaMasLarga(niveles[i]);
             for (int j = 0; j < niveles[i].listaElementos.Count; j++)
@@ -157,15 +145,14 @@ public class Sistema
     }
 
 
-    int largoCadenaMasLarga(Nivel unNivel)
-    {
+    int largoCadenaMasLarga(Nivel unNivel) {
         int retorno = 0;
 
         for (int i = 0; i < unNivel.listaElementos.Count; i++)
             if (retorno < unNivel.listaElementos[i].nombre.Length)
                 retorno = unNivel.listaElementos[i].nombre.Length;
 
-        return retorno;
+            return retorno;
     }
 
 }
