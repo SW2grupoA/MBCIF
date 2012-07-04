@@ -18,6 +18,8 @@ namespace Form_Mbcif.Forms
     /// Lógica de interacción para UserControl1.xaml
     /// </summary>
     /// 
+
+    
     
 
     public partial class UserControl1 : UserControl

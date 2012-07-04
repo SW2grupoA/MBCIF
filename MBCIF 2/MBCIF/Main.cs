@@ -2,9 +2,6 @@ using System;
 
 class MainClass
 {
-    static Elemento uno;
-    static Elemento dos;
-    static Nivel miNivel;
 
     public static void Main(string[] args)
     {
