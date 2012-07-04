@@ -13,9 +13,7 @@ using System.Text;
          */
         public string getGradoMadurez(double gradoBrix,String funcion)
         {
-            if (funcion == "gausiana")
-                return gradoMadurezGausiana(gradoBrix);
-            else if (funcion == "triangular")
+            if (funcion == "triangular")
                 return gradoMadurezTriangular(gradoBrix);
             else if (funcion == "trapezoidal")
                 return gradoMadurezTrapezoidal(gradoBrix);
@@ -23,7 +21,14 @@ using System.Text;
                 return null;
 
         }
-
+        /// <summary>
+        /// Evalua el valor de x en la funcion triangular
+        /// </summary>
+        /// <param name="x">el valor a comparar con la función</param>
+        /// <param name="a">min de la funcion</param>
+        /// <param name="m">punto medio de la funcion</param>
+        /// <param name="b">maximo de la función</param>
+        /// <returns>el valor de pertenencia a la función</returns>
         double funcionTriangular(double x, double a, double m, double b)
         {
             if (x <= a)
@@ -42,24 +47,27 @@ using System.Text;
         }
 
 
-        /**
-         *  x valor
-         *  k anchura de la campana: k mayor es más estrecha la campana
-         *  m valor medio de la funcion
-         * 
-         */
-         double funcionGausiana(double x, double k, double m)
+        /// <summary>
+        /// Función gaussiana
+        /// </summary>
+        /// <param name="x">valor</param>
+        /// <param name="k">anchura de la campana: k mayor es más estrecha la campana</param>
+        /// <param name="m">valor medio de la funcion</param>
+        /// <returns>el valor de pertenencia a la funcion</returns>
+        double funcionGausiana(double x, double k, double m)
         {
             return Math.Exp(-k * Math.Pow((x - m), 2));
         }
 
-        /**
-         * x valor a ingresar
-         * a min de la funcion
-         * b min del nucleo
-         * c max del nucleo 
-         * d max de la funcion
-         */
+        /// <summary>
+        /// Función trapezoidal
+        /// </summary>
+        /// <param name="x">valor a ingresar</param>
+        /// <param name="a">min de la funcion</param>
+        /// <param name="b">min del nucleo</param>
+        /// <param name="c">max del nucleo</param>
+        /// <param name="d">max de la funcion</param>
+        /// <returns>el valor de pertenencia a la función</returns>
         double funcionTrapezoidal(double x, double a, double b, double c, double d)
         {
             if ((x <= a) || (x >= d))
@@ -78,8 +86,7 @@ using System.Text;
         }
 
         /**
-         *  Variable linguistica del máximo entre 3 valores
-         *    
+         *  Variable linguistica del máximo entre 3 valores   
          */
          string max(double uno, double dos, double tres) 
         {
@@ -141,47 +148,6 @@ using System.Text;
                        funcionTriangular(gradoMadurez, minAlta, nucleoAlta, maxAlta));
         }
 
-
-
-        /**
-         *  variable linguistica Madurez con funcion Gausiana
-         */
-         string gradoMadurezGausiana(double gradoMadurez)
-        {   //anchura campana 
-            double k = 3;
-
-            double minBaja = 8.5,
-                   maxBaja = 10.5,
-                   minMedia = 9.5,
-                   maxMedia = 11.5,
-                   minAlta = 11,
-                   maxAlta = 14.5;
-
-            double nucleoBaja = (maxBaja + minBaja) / 2,
-                   nucleoMedia = (maxMedia + minMedia) / 2,
-                   nucleoAlta = (maxAlta + minAlta) / 2;
-
-
-            return max(funcionGausiana(gradoMadurez, k, nucleoBaja), funcionGausiana(gradoMadurez, k, nucleoMedia),
-                funcionGausiana(gradoMadurez, k, nucleoAlta));
-            
-        }
-
-
-        /**
-         *  variable linguistica Madurez con funcion Gausiana
-         */
-         string gradoMadurezGausiana(double gradoMadurez, double k, double minBaja, double maxBaja,
-                                            double minMedia, double maxMedia, double minAlta, double maxAlta)
-        {
-            double nucleoBaja = (maxBaja + minBaja) / 2,
-                   nucleoMedia = (maxMedia + minMedia) / 2,
-                   nucleoAlta = (maxAlta + minAlta) / 2;
-
-
-            return max(funcionGausiana(gradoMadurez, k, nucleoBaja), funcionGausiana(gradoMadurez, k, nucleoMedia),
-                funcionGausiana(gradoMadurez, k, nucleoAlta));   
-        }
 
         /**
          * variable linguistica Madurez con funcion trapezoidal
