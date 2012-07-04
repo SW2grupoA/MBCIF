@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Form_Mbcif", "Form_Mbcif\Form_Mbcif.csproj", "{4F46C5D6-0164-499C-B4C9-13CAA9CCE41A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBCIF", "MBCIF\MBCIF.csproj", "{7B19EB0B-C2F8-482E-BCB5-EADC17A4AECE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F46C5D6-0164-499C-B4C9-13CAA9CCE41A}.Debug|x86.ActiveCfg = Debug|x86
+		{4F46C5D6-0164-499C-B4C9-13CAA9CCE41A}.Debug|x86.Build.0 = Debug|x86
+		{4F46C5D6-0164-499C-B4C9-13CAA9CCE41A}.Release|x86.ActiveCfg = Release|x86
+		{4F46C5D6-0164-499C-B4C9-13CAA9CCE41A}.Release|x86.Build.0 = Release|x86
+		{7B19EB0B-C2F8-482E-BCB5-EADC17A4AECE}.Debug|x86.ActiveCfg = Debug|x86
+		{7B19EB0B-C2F8-482E-BCB5-EADC17A4AECE}.Debug|x86.Build.0 = Debug|x86
+		{7B19EB0B-C2F8-482E-BCB5-EADC17A4AECE}.Release|x86.ActiveCfg = Release|x86
+		{7B19EB0B-C2F8-482E-BCB5-EADC17A4AECE}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
