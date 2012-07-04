@@ -79,7 +79,7 @@ public class Sistema
         }
 
 
-        if (contador > 8) estado = "oscilatorio";
+        if (contador > 8 && !compararConElUltimoEstado(valores.Count-2)) estado = "oscilatorio";
     }
 
 

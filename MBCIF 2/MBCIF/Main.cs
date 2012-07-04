@@ -100,7 +100,7 @@ class MainClass
         //nivelMicrobus.agregarRelacion(1, 3, new relacion("x", new regla(1)));
         nivelMicrobus.agregarRelacion(1, 4, new relacion("x", new regla(1)));
 
-        nivelMicrobus.agregarRelacion(2, 1, new relacion("x*(3/7)", new regla(1)));
+        nivelMicrobus.agregarRelacion(2, 1, new relacion("x*(4/7)", new regla(1)));
         nivelMicrobus.agregarRelacion(2, 2, new relacion("y+(48/10)", new regla(10)));
         nivelMicrobus.agregarRelacion(2, 3, new relacion("x*(1/10)", new regla(1)));
         nivelMicrobus.agregarRelacion(2, 6, new relacion("x", new regla(1)));
