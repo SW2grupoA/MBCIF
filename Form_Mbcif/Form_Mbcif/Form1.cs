@@ -35,6 +35,8 @@ namespace Form_Mbcif
         {
             //Muestra ventana de ingreso de arbol.
             Forms.Forms ingreso_sistema = new Forms.Forms(this, sistema, this.tablaElementos, this.tablaRelaciones);
+            sistema.niveles.Clear();
+            llenarTablas();
             ingreso_sistema.MdiParent = this;
             guardarToolStripMenuItem.Enabled = true;
             ingreso_sistema.Show();            
