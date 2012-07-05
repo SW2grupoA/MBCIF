@@ -17,6 +17,13 @@ namespace Form_Mbcif
         {
             InitializeComponent();
             sistema = new Sistema();
+            tablaElementos.SendToBack();
+            tablaRelaciones.SendToBack();
+
+            Forms.Ventana_tablas ventanaTablas =
+                new Forms.Ventana_tablas(this, sistema, this.tablaElementos, this.tablaRelaciones);
+            ventanaTablas.MdiParent = this;
+            ventanaTablas.Show();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -30,7 +37,7 @@ namespace Form_Mbcif
             Forms.Forms ingreso_sistema = new Forms.Forms(this, sistema, this.tablaElementos, this.tablaRelaciones);
             ingreso_sistema.MdiParent = this;
             guardarToolStripMenuItem.Enabled = true;
-            ingreso_sistema.Show();
+            ingreso_sistema.Show();            
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -206,15 +213,12 @@ namespace Form_Mbcif
             sistema.agregarNivel(nivelMicrobus);
             sistema.agregarNivel(nivelUsuario);
             sistema.agregarNivel(petroleo);
-            sistema.agregarNivel(familiaColectivero);
-
-
-        
+            sistema.agregarNivel(familiaColectivero);        
         }
 
         private void cargarEjemploToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            sistema = new Sistema();
+            sistema.niveles.Clear();
             cargarEjemploColectivo();
             llenarTablas();
         }
@@ -245,10 +249,17 @@ namespace Form_Mbcif
                 for (int b = 0; b < sistema.niveles[a].matriz.Count; b++)
                 {
                     for (int c = 0; c < sistema.niveles[a].matriz[b].Count; c++)
-                        if (sistema.niveles[a].matriz[b][c] != null) tablaRelaciones.Rows.Add(sistema.niveles[a].nombre,
+                        if (sistema.niveles[a].matriz[b][c] != null)
+                            if (sistema.niveles[a].matriz[b][c].Regla.operador != null)
+                                tablaRelaciones.Rows.Add(sistema.niveles[a].nombre,
                                 sistema.niveles[a].listaElementos[b].nombre, sistema.niveles[a].listaElementos[c].nombre,
                                 sistema.niveles[a].matriz[b][c].funcion, sistema.niveles[a].matriz[b][c].Regla.iteracion,
                                 sistema.niveles[a].matriz[b][c].Regla.operador + sistema.niveles[a].matriz[b][c].Regla.valor);
+                            else
+                                tablaRelaciones.Rows.Add(sistema.niveles[a].nombre,
+                                sistema.niveles[a].listaElementos[b].nombre, sistema.niveles[a].listaElementos[c].nombre,
+                                sistema.niveles[a].matriz[b][c].funcion, sistema.niveles[a].matriz[b][c].Regla.iteracion,
+                                "-");
                 }
             }
 
@@ -260,18 +271,7 @@ namespace Form_Mbcif
             llenarTablas();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string numeroIteraciones = textBoxCantidadIteraciones.Text;
-            int iteraciones = Int32.Parse(numeroIteraciones);
-
-            for (int i = 0; i < iteraciones; i++ )
-            {
-                sistema.iterar();
-                llenarTablas();
-                System.Threading.Thread.Sleep(1);
-            }
-        }
+        
        
     }
 }

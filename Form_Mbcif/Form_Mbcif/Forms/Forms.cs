@@ -196,15 +196,24 @@ namespace Form_Mbcif.Forms
 
             tablaRelaciones.Rows.Clear();
             //llenar tabla relaciones
-            for(int a=0; a< sistema.niveles.Count; a++){
-                tablaElementos.Rows.Add("Nivel " + a + " :" + sistema.niveles[a].nombre, " ",
+            for (int a = 0; a < sistema.niveles.Count; a++)
+            {
+                tablaRelaciones.Rows.Add("Nivel " + a + " :" + sistema.niveles[a].nombre, " ",
                            " ");
-                for (int b = 0; b < sistema.niveles[a].matriz.Count; b++) {
+                for (int b = 0; b < sistema.niveles[a].matriz.Count; b++)
+                {
                     for (int c = 0; c < sistema.niveles[a].matriz[b].Count; c++)
-                        if (sistema.niveles[a].matriz[b][c] != null) tablaRelaciones.Rows.Add(sistema.niveles[a],
-                                sistema.niveles[a].listaElementos[b], sistema.niveles[a].listaElementos[c],
+                        if (sistema.niveles[a].matriz[b][c] != null)
+                            if (sistema.niveles[a].matriz[b][c].Regla.operador != null)
+                                tablaRelaciones.Rows.Add(sistema.niveles[a].nombre,
+                                sistema.niveles[a].listaElementos[b].nombre, sistema.niveles[a].listaElementos[c].nombre,
                                 sistema.niveles[a].matriz[b][c].funcion, sistema.niveles[a].matriz[b][c].Regla.iteracion,
                                 sistema.niveles[a].matriz[b][c].Regla.operador + sistema.niveles[a].matriz[b][c].Regla.valor);
+                            else
+                                tablaRelaciones.Rows.Add(sistema.niveles[a].nombre,
+                                sistema.niveles[a].listaElementos[b].nombre, sistema.niveles[a].listaElementos[c].nombre,
+                                sistema.niveles[a].matriz[b][c].funcion, sistema.niveles[a].matriz[b][c].Regla.iteracion,
+                                "-");
                 }
             }
 
