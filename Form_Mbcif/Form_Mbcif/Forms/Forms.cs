@@ -20,12 +20,18 @@ namespace Form_Mbcif.Forms
         Sistema sistema;
         #endregion
 
-        public Forms(Form form, Sistema sistema)
+
+        DataGridView tablaElementos, tablaRelaciones;
+        public Forms(Form form, Sistema sistema, DataGridView tablaElementos, DataGridView tablaRelaciones)
         {
             InitializeComponent();
             this.form = form;
             this.sistema = sistema;
-   
+            this.tablaElementos = tablaElementos;
+            this.tablaRelaciones = tablaRelaciones;
+
+
+            this.BringToFront();
         }
 
         private void Forms_Load(object sender, EventArgs e)
@@ -87,6 +93,8 @@ namespace Form_Mbcif.Forms
                 update_tree();
                 Forms_Load(sender, e);
             }
+
+            llenarTablas();
  
         }
 
@@ -163,15 +171,48 @@ namespace Form_Mbcif.Forms
 
         private void elementosToolStripButton_Click(object sender, EventArgs e)
         {
-            elemento = new Form_Elementos(sistema);
+            elemento = new Form_Elementos(sistema, tablaElementos, tablaRelaciones);
             elemento.MdiParent = form;
             elemento.Show();
 
         }
 
+        public void llenarTablas()
+        {
+
+            tablaElementos.Rows.Clear();
+            //llenar tabla elementos
+            for (int i = 0; i < sistema.niveles.Count; i++)
+            {
+                tablaElementos.Rows.Add("Nivel " + i + " :" + sistema.niveles[i].nombre, " ",
+                           " ");
+                for (int j = 0; j < sistema.niveles[i].listaElementos.Count; j++)
+                {
+                    tablaElementos.Rows.Add(sistema.niveles[i].nombre, sistema.niveles[i].listaElementos[j].nombre,
+                        sistema.niveles[i].listaElementos[j].valor);
+                }
+
+            }
+
+            tablaRelaciones.Rows.Clear();
+            //llenar tabla relaciones
+            for(int a=0; a< sistema.niveles.Count; a++){
+                tablaElementos.Rows.Add("Nivel " + a + " :" + sistema.niveles[a].nombre, " ",
+                           " ");
+                for (int b = 0; b < sistema.niveles[a].matriz.Count; b++) {
+                    for (int c = 0; c < sistema.niveles[a].matriz[b].Count; c++)
+                        if (sistema.niveles[a].matriz[b][c] != null) tablaRelaciones.Rows.Add(sistema.niveles[a],
+                                sistema.niveles[a].listaElementos[b], sistema.niveles[a].listaElementos[c],
+                                sistema.niveles[a].matriz[b][c].funcion, sistema.niveles[a].matriz[b][c].Regla.iteracion,
+                                sistema.niveles[a].matriz[b][c].Regla.operador + sistema.niveles[a].matriz[b][c].Regla.valor);
+                }
+            }
+
+        }
+
         private void relacionesToolStripButton_Click(object sender, EventArgs e)
         {
-            relaciones = new Form_Relaciones(sistema);
+            relaciones = new Form_Relaciones(sistema, tablaElementos, tablaRelaciones);
             relaciones.MdiParent = form;
             relaciones.Show();
         }
@@ -199,5 +240,6 @@ namespace Form_Mbcif.Forms
           nombre_textBox.Text = comboBox1.SelectedItem.ToString();
           nombre_textBox.Enabled = false;
         }
+
     }
 }

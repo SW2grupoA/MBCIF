@@ -13,13 +13,17 @@ namespace Form_Mbcif.Forms
     public partial class Form_Relaciones : Form
     {
         Sistema sistema;
+        DataGridView tablaElementos, tablaRelaciones;
 
         //Inicializa los component
-        public Form_Relaciones(Sistema sistema)
+        public Form_Relaciones(Sistema sistema, DataGridView tablaElementos, DataGridView tablaRelaciones)
         {
             InitializeComponent();
             this.sistema = sistema;
             this.listarniveles();
+            this.tablaElementos = tablaElementos;
+            this.tablaRelaciones = tablaRelaciones;
+                        
         }
         //carga los componentes.
         private void Form_Relaciones_Load(object sender, EventArgs e)
@@ -81,6 +85,43 @@ namespace Form_Mbcif.Forms
 
             listarniveles();
             limpiartextbox();
+
+            llenarTablas();
+        }
+
+        public void llenarTablas()
+        {
+
+            tablaElementos.Rows.Clear();
+            //llenar tabla elementos
+            for (int i = 0; i < sistema.niveles.Count; i++)
+            {
+                tablaElementos.Rows.Add("Nivel " + i + " :" + sistema.niveles[i].nombre, " ",
+                           " ");
+                for (int j = 0; j < sistema.niveles[i].listaElementos.Count; j++)
+                {
+                    tablaElementos.Rows.Add(sistema.niveles[i].nombre, sistema.niveles[i].listaElementos[j].nombre,
+                        sistema.niveles[i].listaElementos[j].valor);
+                }
+
+            }
+
+            tablaRelaciones.Rows.Clear();
+            //llenar tabla relaciones
+            for (int a = 0; a < sistema.niveles.Count; a++)
+            {
+                tablaElementos.Rows.Add("Nivel " + a + " :" + sistema.niveles[a].nombre, " ",
+                           " ");
+                for (int b = 0; b < sistema.niveles[a].matriz.Count; b++)
+                {
+                    for (int c = 0; c < sistema.niveles[a].matriz[b].Count; c++)
+                        if (sistema.niveles[a].matriz[b][c] != null) tablaRelaciones.Rows.Add(sistema.niveles[a],
+                                sistema.niveles[a].listaElementos[b], sistema.niveles[a].listaElementos[c],
+                                sistema.niveles[a].matriz[b][c].funcion, sistema.niveles[a].matriz[b][c].Regla.iteracion,
+                                sistema.niveles[a].matriz[b][c].Regla.operador + sistema.niveles[a].matriz[b][c].Regla.valor);
+                }
+            }
+
         }
 
         private void limpiartextbox()

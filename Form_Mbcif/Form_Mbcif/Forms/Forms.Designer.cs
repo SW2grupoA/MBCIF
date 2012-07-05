@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Nuevo_nivel");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Sistema", new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Nuevo_nivel");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Sistema", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Forms));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -159,12 +159,12 @@
             this.treeView.FullRowSelect = true;
             this.treeView.Location = new System.Drawing.Point(12, 42);
             this.treeView.Name = "treeView";
-            treeNode3.Name = "Nodo0";
-            treeNode3.Text = "Nuevo_nivel";
-            treeNode4.Name = "";
-            treeNode4.Text = "Sistema";
+            treeNode1.Name = "Nodo0";
+            treeNode1.Text = "Nuevo_nivel";
+            treeNode2.Name = "";
+            treeNode2.Text = "Sistema";
             this.treeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4});
+            treeNode2});
             this.treeView.Size = new System.Drawing.Size(176, 260);
             this.treeView.TabIndex = 3;
             this.treeView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseDoubleClick);
@@ -267,10 +267,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(508, 331);
             this.ControlBox = false;
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.treeView);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.statusStrip1);
             this.Name = "Forms";
             this.Text = "Ingreso Sistemas";
             this.Load += new System.EventHandler(this.Forms_Load);

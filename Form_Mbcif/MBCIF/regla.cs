@@ -9,8 +9,8 @@ using System.Text;
 public class regla
 {
     int contador = 0;
-    double valor;
-    string operador;
+    public double valor;
+    public string operador;
     public int iteracion;
 
     /// <summary>

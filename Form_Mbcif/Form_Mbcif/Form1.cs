@@ -27,10 +27,20 @@ namespace Form_Mbcif
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Muestra ventana de ingreso de arbol.
-            Forms.Forms ingreso_sistema = new Forms.Forms(this, sistema);
+            Forms.Forms ingreso_sistema = new Forms.Forms(this, sistema, this.tablaElementos, this.tablaRelaciones);
             ingreso_sistema.MdiParent = this;
             guardarToolStripMenuItem.Enabled = true;
             ingreso_sistema.Show();
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
         }
 
         

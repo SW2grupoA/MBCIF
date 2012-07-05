@@ -7,17 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
+using Form_Mbcif;
 
 namespace Form_Mbcif.Forms
 {
     public partial class Form_Elementos : Form
     {
         Sistema sistema;
+        DataGridView tablaElementos, tablaRelaciones;
 
-        public Form_Elementos(Sistema sistema)
+        public Form_Elementos(Sistema sistema, DataGridView tablaElementos, DataGridView tablaRelaciones)
         {
             InitializeComponent();
             this.sistema = sistema;
+            this.tablaElementos = tablaElementos;
+            this.tablaRelaciones = tablaRelaciones;
+
            
         }
         //Al cargar la ventana.
@@ -26,6 +31,42 @@ namespace Form_Mbcif.Forms
             set_combobox_niveles();
             set_List_elementos();
         }
+
+        public void llenarTablas()
+        {
+
+            tablaElementos.Rows.Clear();
+            //llenar tabla elementos
+            for (int i = 0; i < sistema.niveles.Count; i++)
+            {
+                tablaElementos.Rows.Add("Nivel " + i + " :" + sistema.niveles[i].nombre, " ",
+                           " ");
+                for (int j = 0; j < sistema.niveles[i].listaElementos.Count; j++)
+                {
+                    tablaElementos.Rows.Add(sistema.niveles[i].nombre, sistema.niveles[i].listaElementos[j].nombre,
+                        sistema.niveles[i].listaElementos[j].valor);
+                }
+
+            }
+
+            tablaRelaciones.Rows.Clear();
+            //llenar tabla relaciones
+            for (int a = 0; a < sistema.niveles.Count; a++)
+            {
+                tablaElementos.Rows.Add("Nivel " + a + " :" + sistema.niveles[a].nombre, " ",
+                           " ");
+                for (int b = 0; b < sistema.niveles[a].matriz.Count; b++)
+                {
+                    for (int c = 0; c < sistema.niveles[a].matriz[b].Count; c++)
+                        if (sistema.niveles[a].matriz[b][c] != null) tablaRelaciones.Rows.Add(sistema.niveles[a],
+                                sistema.niveles[a].listaElementos[b], sistema.niveles[a].listaElementos[c],
+                                sistema.niveles[a].matriz[b][c].funcion, sistema.niveles[a].matriz[b][c].Regla.iteracion,
+                                sistema.niveles[a].matriz[b][c].Regla.operador + sistema.niveles[a].matriz[b][c].Regla.valor);
+                }
+            }
+
+        }
+
         //A presionar aceptar guarda y se sale.
         private void button1_Click(object sender, EventArgs e)
         {
@@ -35,7 +76,7 @@ namespace Form_Mbcif.Forms
         }
         //Al presionar cancelar se cierra.
         private void button2_Click(object sender, EventArgs e)
-        {
+        {   
             //guardar los datos de la tabla
 
             foreach (Nivel n in sistema.niveles)
@@ -47,8 +88,10 @@ namespace Form_Mbcif.Forms
                 }
             }
             limpia_text(sender, e);
-           
+            llenarTablas();
         }
+
+        
 
         private void limpia_text(object sender, EventArgs e)
         {

@@ -267,6 +267,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(523, 293);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.label2);
@@ -279,7 +280,6 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.Ingresar_button);
             this.Controls.Add(this.Aceptar_button);
-            this.Controls.Add(this.toolStrip1);
             this.Name = "Form_Elementos";
             this.Text = "Ingreso Elementos";
             this.Load += new System.EventHandler(this.Form_Elementos_Load);

@@ -7,7 +7,8 @@ using System.Windows.Forms;
 namespace Form_Mbcif
 {
     static class Program
-    {
+    {        
+
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -16,8 +17,9 @@ namespace Form_Mbcif
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-            
+
+            Form1 ventanaPrincipal = new Form1();
+            Application.Run(ventanaPrincipal);
         }
     }
 }
